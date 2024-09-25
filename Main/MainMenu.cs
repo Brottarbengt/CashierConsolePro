@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+
+            // Do While loop eller bara while loop?
+            
         }
     }
 }
