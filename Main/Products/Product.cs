@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MainMenu
+namespace Kassan.Products
 {
-    internal class Product
+    internal class Product : IAddProduct
     {
         public string Name { get; set; }
 
-        public string ProdCode { get; set; }
+        public string ProductCode { get; set; }
 
         public decimal Price { get; set; }
+
+        public void AddProduct(Product product)
+        {
+
+        }
+
     }
 }
