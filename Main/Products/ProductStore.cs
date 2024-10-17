@@ -13,10 +13,7 @@ namespace Kassan.Products
     {
         private List<Product> products = new List<Product>();
 
-        //void AddProduct(Product productToAdd) {}
-        //void RemoveProduct(Product product) 
-        //void Persist() //save products to file -- finns som interface (Bra eller dåligt?)
-        //void Load() // read products from file -- finns som interface
+        
 
         public void Write()
         {
@@ -28,9 +25,9 @@ namespace Kassan.Products
             // Read from file
         }
 
-        public void RemoveProduct()
+        public void RemoveProduct(Product product)
         {
-            // Remove product from 
+            products.Remove(product);
         }
 
         public void AddProduct(Product product)
@@ -40,3 +37,7 @@ namespace Kassan.Products
     }
 
 }
+//void AddProduct(Product productToAdd) {}
+//void RemoveProduct(Product product) 
+//void Persist() //save products to file -- finns som interface (Bra eller dåligt?)
+//void Load() // read products from file -- finns som interface

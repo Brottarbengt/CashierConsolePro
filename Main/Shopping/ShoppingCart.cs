@@ -7,7 +7,7 @@ using Kassan.Products;
 
 namespace Kassan.Shopping
 {
-    internal class ShoppingCart : IPay, IAddProductToCart
+    internal class ShoppingCart : IPay, IAddProductToCart, IRemoveFromCart
     {
         public List<Product> products = new List<Product>();
 
@@ -20,6 +20,11 @@ namespace Kassan.Shopping
         public void AddProductToCart(Product product)
         {
             products.Add(product);
+        }
+
+        public void RemoveFromCart(Product product)
+        {
+            products.Remove(product);
         }
     }
 }

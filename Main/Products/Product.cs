@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace Kassan.Products
 {
-    internal class Product : IAddProduct
-    {
+    internal class Product
+    { 
+
         public string Name { get; set; }
 
         public string ProductCode { get; set; }
 
         public decimal Price { get; set; }
 
-        public void AddProduct(Product product)
-        {
-
-        }
-
+        
     }
 }

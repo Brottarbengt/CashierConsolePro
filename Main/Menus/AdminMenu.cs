@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kassan.Products
+namespace Kassan.Menus
 {
-    // Behövs denna?
-    internal interface IRemoveProduct
+    internal class AdminMenu
     {
-        void RemoveProduct(Product product);
     }
 }
