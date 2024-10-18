@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kassan.CampaignTools.Kassan.CampaignTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,20 +7,12 @@ using System.Threading.Tasks;
 
 namespace Kassan.CampaignTools
 {
-    public class Campaign : IAddCampaign, IRemoveCampaign
+    public class Campaign 
     {
 
         public DateOnly CampaignDate { get; set; }
 
-        public void AddCampaign()
-        {
-
-        }
-
-        public void RemoveCampaign()
-        {
-
-        }
+        // need more props? list of Product, how much % discount
 
     }
 

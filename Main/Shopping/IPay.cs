@@ -8,6 +8,9 @@ namespace Kassan.Shopping
 {
     internal interface IPay
     {
-        void CalculateSum();
+        void CreateReceipt();
+
+        void DisplayReceipt();
     }
+
 }

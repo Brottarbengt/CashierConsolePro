@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Kassan.FileManagement
 {
     /// <summary>
-    /// Writes Products, Reciept, Campaign to a textfile
+    /// Writes Products, Receipt, Campaign to a textfile
     /// </summary>
     internal interface IFileWriter
     {
-        void Write(); // not finished
+        void Write(); 
     }
 }

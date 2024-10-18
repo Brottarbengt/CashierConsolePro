@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kassan.Menus
+namespace Kassan.Shopping
 {
-    internal class Shop
+    internal interface ICalculateSum
     {
+        double CalculateSum(ShoppingCart cart);
     }
 }

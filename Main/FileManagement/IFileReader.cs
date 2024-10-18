@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Kassan.FileManagement
 {
     /// <summary>
-    /// Reads Products, Reciept, Campaign from a textfile
+    /// Reads Products, Receipt, Campaign from a textfile
     /// </summary>
     internal interface IFileReader
     {

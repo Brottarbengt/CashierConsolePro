@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kassan.Products
+namespace Kassan.CampaignTools
 {
-    // Behövs denna?
-    internal interface IRemoveProduct
+    internal class RemoveCampaign
     {
-        void RemoveProduct(Product product);
+        void RemoveCampaign(Campaign campaign)
+        {
+
+        }
     }
 }

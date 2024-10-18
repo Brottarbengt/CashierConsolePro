@@ -6,15 +6,22 @@ using System.Threading.Tasks;
 
 namespace Kassan.Products
 {
-    internal class Product
-    { 
-
+    public class Product
+    {
         public string Name { get; set; }
-
         public string ProductCode { get; set; }
-
         public decimal Price { get; set; }
 
-        
+        public Product(string name, string productCode, decimal price)
+        {
+            Name = name;
+            ProductCode = productCode;
+            Price = price;
+        }
+
+        public override string ToString()
+        {
+            return $"Product: {Name}, Code: {ProductCode}, Price: {Price:C}";
+        }
     }
 }
