@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Kassan.Menus
 {
-    public static class ProductsMenu
+    public static class ProductsMenu 
     {
+
         private static string[] menuOptions = new string[] { "Add Product", "Remove Product", "Show All Products", "Back to Top Menu" };
 
         public static void ShowMenu()
@@ -21,10 +22,10 @@ namespace Kassan.Menus
             switch (selectedIndex)
             {
                 case 0:
-                    ProductStore(); // Should be add product somehow
+                    AddProduct(); // Should be add product somehow
                     break;
                 case 1:
-                    RemoveProduct.Execute();
+                    RemoveProduct();
                     break;
                 case 2:
                     ShowAllProducts();
@@ -36,12 +37,62 @@ namespace Kassan.Menus
                     break;
             }
         }
+        private static void AddProduct()
+        {
+            Console.Clear();
+            Console.WriteLine("Add Product");
+
+            // Get product details from the user
+            Console.Write("Enter Product Name: ");
+            string name = Console.ReadLine();
+            Console.Write("Enter Product Code: ");
+            string code = Console.ReadLine();
+            Console.Write("Enter Product Price: ");
+            decimal price = decimal.Parse(Console.ReadLine());
+            Console.Write("Enter Price type (Kg = 0, Each = 1): ");
+            PriceType priceType = Enum.Parse<PriceType>(Console.ReadLine());
+
+            // Create a new Product and add it to the store
+            Product newProduct = new Product(name, code, price, priceType);
+            ProductStore.Instance().AddProduct(newProduct);
+
+            Console.WriteLine("Product added successfully.");
+            Console.ReadKey();
+            ShowMenu();
+        }
+
+        private static void RemoveProduct()
+        {
+            Console.Clear();
+            Console.WriteLine("Remove Product");
+
+            // Get product code from the user
+            Console.Write("Enter Product Code to Remove: ");
+            string code = Console.ReadLine();
+            var productStore = ProductStore.Instance();
+
+            // Find the product in the store
+            Product productToRemove = productStore.FindProduct(code);
+
+            if (productToRemove != null)
+            {
+                productStore.RemoveProduct(productToRemove);
+                Console.WriteLine("Product removed successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Product not found.");
+            }
+
+            Console.ReadKey();
+            ShowMenu();
+        }
 
         private static void ShowAllProducts()
         {
-            // Logic to display all products
+            
             Console.WriteLine("Showing all products...");
-            Console.ReadLine();  // Pause for demo purposes
+            Console.ReadLine();  
         }
     }
 }

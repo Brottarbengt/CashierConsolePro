@@ -1,4 +1,5 @@
 ﻿using Kassan.Graphic;
+using Kassan.Menus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,8 @@ namespace Kassan
             Console.WriteLine(Startscreen.startScreen);
             Console.ReadKey();
             Console.Clear();
-
-            while (true)
-            {
-
-            }
+            TopMenu.ShowMenu();
+            
         }
     }
 }

@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kassan.CampaignTools
+namespace Kassan.Products
 {
-    internal class RemoveCampaign
+    internal class AddProduct
     {
-        void RemoveCampaigns(Campaign campaign)
-        {
-
-        }
     }
 }

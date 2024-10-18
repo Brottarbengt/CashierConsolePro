@@ -70,9 +70,9 @@ namespace Kassan.Shopping
             Console.WriteLine("Items:");
             foreach (var product in cart.products)
             {
-                Console.WriteLine($"{product.Name} - {product.Price} kr");
+                Console.WriteLine($"{product.Name} - {product.Price:C} kr / {product.PriceType.ToString()}");
             }
-            Console.WriteLine($"Total: {Total} kr");
+            Console.WriteLine($"Total: {Total:C}");
             Console.WriteLine("Press any key to return to menu...");
             Console.ReadKey();
         }

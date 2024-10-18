@@ -3,6 +3,8 @@
 
 
 
+using Kassan;
+
 namespace Main
 {
     internal class Program
@@ -10,7 +12,7 @@ namespace Main
         static void Main(string[] args)
         {
 
-            // Do While loop eller bara while loop?
+            CashierConsolePro.Start();
             
         }
     }

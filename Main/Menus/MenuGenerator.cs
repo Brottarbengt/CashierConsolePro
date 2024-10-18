@@ -22,7 +22,7 @@ namespace Kassan.Menus
                     if (i == selectedIndex)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine($"* {options[i]} *");
+                        Console.WriteLine($"     {options[i]} ");
                     }
                     else
                     {

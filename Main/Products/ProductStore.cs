@@ -7,11 +7,18 @@ using System.IO;
 
 namespace Kassan.Products
 {
-    internal class ProductStore : IFileReader, IFileWriter
+    public class ProductStore : IFileReader, IFileWriter
     {
+
+        private static ProductStore instance;
         private List<Product> products = new List<Product>();
+        
         private readonly string filePath = "products.txt"; // File to store products.
 
+        private ProductStore()
+        {
+
+        }
         // Add a product to the list
         public void AddProduct(Product product)
         {
@@ -31,7 +38,7 @@ namespace Kassan.Products
             {
                 foreach (var product in products)
                 {
-                    writer.WriteLine($"{product.Name},{product.ProductCode},{product.Price}");
+                    writer.WriteLine($"{product.Name},{product.ProductCode},{product.Price},{product.PriceType}");
                 }
 
             }
@@ -49,13 +56,14 @@ namespace Kassan.Products
                     while ((line = reader.ReadLine()) != null)
                     {
                         var data = line.Split(',');
-                        if (data.Length == 3)
+                        if (data.Length == 4)
                         {
                             string name = data[0];
                             string productCode = data[1];
+                            PriceType priceType = Enum.Parse<PriceType>(data[3]);
                             if (decimal.TryParse(data[2], out decimal price))
                             {
-                                products.Add(new Product(name, productCode, price));
+                                products.Add(new Product(name, productCode, price, priceType));
                             }
 
                         }
@@ -64,10 +72,30 @@ namespace Kassan.Products
             }
         }
 
+        public Product? FindProduct(string productCode)
+        {
+            foreach (var product in products)
+            {
+                if (productCode.Equals(product.ProductCode, StringComparison.OrdinalIgnoreCase))
+                {
+                    return product;
+                }
+            }
+            return null;
+        }
         
         public List<Product> GetAllProducts()
         {
             return new List<Product>(products);
+        }
+
+        public static ProductStore Instance()
+        {
+            if (instance == null)
+            {
+                instance = new ProductStore();
+            }
+            return instance;
         }
 
     }

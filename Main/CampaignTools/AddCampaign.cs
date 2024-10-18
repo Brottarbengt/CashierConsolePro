@@ -10,7 +10,7 @@ namespace Kassan.CampaignTools
     {
         internal class AddCampaign
         {
-           public void AddCampaign(Campaign campaign)
+           internal void AddCampaigns(Campaign campaign)
             {
 
             }
