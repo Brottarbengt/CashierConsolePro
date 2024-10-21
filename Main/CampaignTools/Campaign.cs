@@ -17,7 +17,8 @@ namespace Kassan.CampaignTools
 
         // need more props? list of Product, how much % discount
 
-        /* Solution proposal 1
+        /* 
+          Solution proposal 1
           
           prop Discount on Product.
                     
@@ -31,7 +32,12 @@ namespace Kassan.CampaignTools
                    
           AddCampaign() updates price when called, also is called in start of program, reading campaign from list.
           
-                                                               
+                     
+            Solution 2
+                referenser till Campaigns på Product. 
+                Product.Price räknar du ut totala discount där.
+                ändra/lägga till en prop på Product som håller ListPrice/BasePrice 
+                och Price kan vara en beräknad prop som inkluderar rabatter
          */
 
     }
