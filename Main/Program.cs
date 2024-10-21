@@ -1,8 +1,4 @@
 ﻿
-
-
-
-
 using Kassan;
 
 namespace Main
@@ -19,13 +15,3 @@ namespace Main
 }
 
 
-/* Metoder som behövs:
- 
-  ändra namn på prod
-
-  -=- på pris
-lägga till prod
-pay
-Skriva kvitto till fil
- lägga till ta bort kampamnjer
-*/

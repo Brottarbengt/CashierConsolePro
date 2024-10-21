@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kassan.CampaignTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Kassan.Products
         public string ProductCode { get; }
         public decimal Price { get; }
         public PriceType PriceType { get; }
+        public Campaign[] Campaigns { get;}
 
         public Product(string name, string productCode, decimal price, PriceType priceType)
         {

@@ -86,7 +86,7 @@ namespace Kassan.Products
         
         public List<Product> GetAllProducts()
         {
-            return new List<Product>(products);
+            return products;
         }
 
         public static ProductStore Instance()

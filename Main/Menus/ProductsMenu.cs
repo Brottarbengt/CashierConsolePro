@@ -49,7 +49,7 @@ namespace Kassan.Menus
             string code = Console.ReadLine();
             Console.Write("Enter Product Price: ");
             decimal price = decimal.Parse(Console.ReadLine());
-            Console.Write("Enter Price type (Kg = 0, Each = 1): ");
+            Console.Write("Enter Price type (Weight = 0, Each = 1): ");
             PriceType priceType = Enum.Parse<PriceType>(Console.ReadLine());
 
             // Create a new Product and add it to the store
@@ -90,9 +90,15 @@ namespace Kassan.Menus
 
         private static void ShowAllProducts()
         {
-            
-            Console.WriteLine("Showing all products...");
-            Console.ReadLine();  
+            Console.Clear();
+            var productStore = ProductStore.Instance();
+            Console.WriteLine("\n  Products in store: ");
+            foreach (var product in productStore.GetAllProducts())
+            {
+                Console.WriteLine($"    {product.Name},{product.ProductCode},{product.Price},{product.PriceType}");
+            }
+            Console.ReadKey();
+            ShowMenu();
         }
     }
 }
