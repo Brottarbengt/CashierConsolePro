@@ -33,7 +33,7 @@ namespace Kassan.Shopping
                 writer.WriteLine("Items:");
                 foreach (var product in cart.products)
                 {
-                    writer.WriteLine($"{product.Name} - {product.Price:C}");
+                    writer.WriteLine($"{product.Name} - {product.ListPrice:C} Discount {product.Price - product.ListPrice}");
                 }
                 writer.WriteLine($"Total: {Total:C}");
                 writer.WriteLine("----------------------------------");

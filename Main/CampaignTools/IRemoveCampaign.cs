@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Kassan.CampaignTools
 {
-    namespace Kassan.CampaignTools
+    internal interface IRemoveCampaign
     {
-        internal class AddCampaign
+        void RemoveCampaigns(Campaign campaign)
         {
-           internal void AddCampaigns(Campaign campaign)
-            {
 
-            }
         }
     }
 }

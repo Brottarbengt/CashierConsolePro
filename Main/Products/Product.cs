@@ -11,23 +11,36 @@ namespace Kassan.Products
     {
         public string Name { get; }
         public string ProductCode { get; }
-        public decimal Price { get; }
+        public decimal Price => CalculatePrice();
+        public decimal ListPrice { get; set; }
         public PriceType PriceType { get; }
-        public Campaign[] Campaigns { get;}
+        public Campaign[] Campaigns { get; }
 
-        public Product(string name, string productCode, decimal price, PriceType priceType)
+
+        public Product(string name, string productCode, decimal listPrice, PriceType priceType)
         {
             Name = name;
             ProductCode = productCode;
-            Price = price;
+            ListPrice = listPrice;
             PriceType = priceType;
         }
 
         public override string ToString()
         {
-            return $"Product: {Name}, Code: {ProductCode}, Price: {Price:C}";
+            return $"Product: {Name}, Code: {ProductCode}, Price: {ListPrice:C} Discount: {ListPrice - Price:C}";
+        }
+
+        private decimal CalculatePrice()
+        {
+            decimal price = 0;
+            foreach (var campaign in Campaigns)
+            {
+                price = ListPrice * ( 1 - campaign.Discount);
+            }
+            return price;
         }
     }
+
 
     public enum PriceType
     {

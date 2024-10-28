@@ -22,7 +22,7 @@ namespace Kassan.Menus
             switch (selectedIndex)
             {
                 case 0:
-                    AddProduct(); // Should be add product somehow
+                    AddProduct(); 
                     break;
                 case 1:
                     RemoveProduct();
@@ -31,7 +31,7 @@ namespace Kassan.Menus
                     ShowAllProducts();
                     break;
                 case 3:
-                    TopMenu.ShowMenu();  // Return to Top Menu
+                    TopMenu.ShowMenu();  
                     break;
                 default:
                     break;
@@ -48,12 +48,12 @@ namespace Kassan.Menus
             Console.Write("Enter Product Code: ");
             string code = Console.ReadLine();
             Console.Write("Enter Product Price: ");
-            decimal price = decimal.Parse(Console.ReadLine());
+            decimal listPrice = decimal.Parse(Console.ReadLine());
             Console.Write("Enter Price type (Weight = 0, Each = 1): ");
             PriceType priceType = Enum.Parse<PriceType>(Console.ReadLine());
 
             // Create a new Product and add it to the store
-            Product newProduct = new Product(name, code, price, priceType);
+            Product newProduct = new Product(name, code, listPrice, priceType);
             ProductStore.Instance().AddProduct(newProduct);
 
             Console.WriteLine("Product added successfully.");
@@ -95,7 +95,8 @@ namespace Kassan.Menus
             Console.WriteLine("\n  Products in store: ");
             foreach (var product in productStore.GetAllProducts())
             {
-                Console.WriteLine($"    {product.Name},{product.ProductCode},{product.Price},{product.PriceType}");
+                Console.WriteLine(
+                    $"{product.Name}, {product.ProductCode}, {product.ListPrice} / {product.Price}, {product.PriceType}");
             }
             Console.ReadKey();
             ShowMenu();

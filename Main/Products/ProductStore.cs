@@ -38,7 +38,8 @@ namespace Kassan.Products
             {
                 foreach (var product in products)
                 {
-                    writer.WriteLine($"{product.Name},{product.ProductCode},{product.Price},{product.PriceType}");
+                    writer.WriteLine($"{product.Name},{product.ProductCode}," +
+                        $"{product.Price},{product.PriceType}");
                 }
 
             }

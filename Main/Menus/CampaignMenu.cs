@@ -22,10 +22,10 @@ namespace Kassan.Menus
             switch (selectedIndex)
             {
                 case 0:
-                    //AddCampaign.Execute();
+                    //IAddCampaign.Execute();
                     break;
                 case 1:
-                    //RemoveCampaign.Execute();
+                    //IRemoveCampaign.Execute();
                     break;
                 case 2:
                     ViewAllCampaigns();
