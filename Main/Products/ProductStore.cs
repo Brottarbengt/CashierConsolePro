@@ -1,5 +1,4 @@
 ﻿using Kassan.CampaignTools;
-using Kassan.CampaignTools.Kassan.CampaignTools;
 using Kassan.FileManagement;
 using Kassan.Products;
 using System.Collections.Generic;
@@ -19,13 +18,13 @@ namespace Kassan.Products
         {
 
         }
-        // Add a product to the list
+        // Add a Product to the list
         public void AddProduct(Product product)
         {
             products.Add(product);
         }
 
-        // Remove a product from the list
+        // Remove a Product from the list
         public void RemoveProduct(Product product)
         {
             products.Remove(product);
@@ -103,6 +102,6 @@ namespace Kassan.Products
 }
 
 //void AddProduct(Product productToAdd) {}
-//void RemoveProduct(Product product) 
+//void RemoveProduct(Product Product) 
 //void Persist() //save products to file -- finns som interface (Bra eller dåligt?)
 //void Load() // read products from file -- finns som interface

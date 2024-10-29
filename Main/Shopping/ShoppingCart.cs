@@ -7,33 +7,26 @@ namespace Kassan.Shopping
 {
     internal class ShoppingCart : IAddProductToCart, IRemoveFromCart
     {
-        public List<Product> products = new List<Product>();
+        private List<CartItem> products = new List<CartItem>();
 
-        /// <summary>
-        /// Add product to the cart
-        /// </summary>
-        /// <param name="product"></param>
-        public void AddProductToCart(Product product)
+        public void AddProductToCart(CartItem product)
         {
             products.Add(product);
         }
 
-        /// <summary>
-        /// Remove product from the cart
-        /// </summary>
-        /// <param name="product"></param>
-        public void RemoveFromCart(Product product)
+        public void RemoveFromCart(CartItem product)
         {
             products.Remove(product);
         }
 
-        /// <summary>
-        /// Get all products in the cart
-        /// </summary>
-        /// <returns></returns>
-        public List<Product> GetAllProducts()
+        public List<CartItem> GetAllProducts()
         {
-            return new List<Product>(products);
+            return products;
+        }
+
+        public Receipt CheckOut()
+        {
+            return new Receipt(this);
         }
     }
 }

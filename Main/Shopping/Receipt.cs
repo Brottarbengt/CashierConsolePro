@@ -31,9 +31,9 @@ namespace Kassan.Shopping
                 writer.WriteLine($"Receipt #{receiptCount}");
                 writer.WriteLine($"Date: {Date}");
                 writer.WriteLine("Items:");
-                foreach (var product in cart.products)
+                foreach (var product in cart.GetAllProducts())
                 {
-                    writer.WriteLine($"{product.Name} - {product.ListPrice:C} Discount {product.Price - product.ListPrice}");
+                    writer.WriteLine($"{product.Product.Name} - {product.Product.ListPrice:C} Discount {product.Product.Price - product.Product.ListPrice}");
                 }
                 writer.WriteLine($"Total: {Total:C}");
                 writer.WriteLine("----------------------------------");
@@ -68,9 +68,9 @@ namespace Kassan.Shopping
             Console.WriteLine($"Receipt #{receiptCount}");
             Console.WriteLine($"Date: {Date}");
             Console.WriteLine("Items:");
-            foreach (var product in cart.products)
+            foreach (var product in cart.GetAllProducts())
             {
-                Console.WriteLine($"{product.Name} - {product.Price:C} kr / {product.PriceType.ToString()}");
+                Console.WriteLine($"{product.Product.Name} - {product.Product.Price:C} / {product.Product.PriceType.ToString()}");
             }
             Console.WriteLine($"Total: {Total:C}");
             Console.WriteLine("Press any key to return to menu...");
@@ -88,9 +88,9 @@ namespace Kassan.Shopping
         {
             double totalSum = 0;
 
-            foreach (var product in cart.products)
+            foreach (var item in cart.GetAllProducts())
             {
-                totalSum += (double)product.Price; 
+                totalSum += (double)item.Total; 
             }
 
             return totalSum;

@@ -9,6 +9,6 @@ namespace Kassan.Shopping
 {
     internal interface IRemoveFromCart
     {
-        void RemoveFromCart(Product product); 
+        void RemoveFromCart(CartItem product); 
     }
 }

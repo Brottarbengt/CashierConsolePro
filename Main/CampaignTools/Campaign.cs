@@ -1,4 +1,4 @@
-﻿using Kassan.CampaignTools.Kassan.CampaignTools;
+﻿using Kassan.CampaignTools;
 using Kassan.Products;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Kassan.CampaignTools
 {
-    public class Campaign : IAddCampaign, IRemoveCampaign
+    public class Campaign
     {
         public string CampaignName { get; set; }
         public DateOnly CampaignFromDate { get; set; }
@@ -21,36 +21,7 @@ namespace Kassan.CampaignTools
             CampaignFromDate = from;
             CampaignToDate = to;
             Discount = discount;
-        }
-        
-        public void AddCampaigns()
-        {
-            
-            Console.Clear();
-            Console.WriteLine("Add Campaign");
-
-            // Get product details from the user
-            Console.Write("Enter Campaign Name: ");
-            string campaignName = Console.ReadLine();
-            Console.Write("Enter campaign from date (yyyy, mm, dd): ");
-            string campaignFromDate = Console.ReadLine();
-            Console.Write("Enter campaign to date (yyyy, mm, dd): ");
-            string campaignToDate = Console.ReadLine();
-
-                // Create a new Product and add it to the store
-            Campaign campaign = new Campaign(name, from, to, discount);
-            ProductStore.Instance().AddProduct(newProduct);
-
-            Console.WriteLine("Product added successfully.");
-            Console.ReadKey();
-            ShowMenu();
-            
-        }
-
-        public void RemoveCampaigns(Campaign campaign)
-        {
-
-        }
+        }                
     }
 
 
@@ -61,7 +32,7 @@ namespace Kassan.CampaignTools
 
 /* 
  * 
- * Eller så har du referenser till Campains på Product. 
+ * Eller  referenser till Campaigns på Product. 
  * Så när du gör Product.Price så räknar du ut totala discount där.
 Du skulle kunna ändra/lägga till en prop på Product som 
 håller ListPrice/BasePrice och Price kan vara en beräknad prop som inkluderar rabatter

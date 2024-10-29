@@ -32,10 +32,10 @@ namespace Kassan.Products
 
         private decimal CalculatePrice()
         {
-            decimal price = 0;
+            decimal price = ListPrice;
             foreach (var campaign in Campaigns)
             {
-                price = ListPrice * ( 1 - campaign.Discount);
+                price = price * ( 1 - (campaign.Discount / 100));
             }
             return price;
         }

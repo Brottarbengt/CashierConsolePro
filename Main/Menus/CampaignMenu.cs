@@ -1,10 +1,11 @@
 ﻿using Kassan.CampaignTools;
-using Kassan.CampaignTools.Kassan.CampaignTools;
+using Kassan.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Kassan.Menus
 {
@@ -22,27 +23,20 @@ namespace Kassan.Menus
             switch (selectedIndex)
             {
                 case 0:
-                    //IAddCampaign.Execute();
+                    CampaignManager.AddCampaign();
                     break;
                 case 1:
-                    //IRemoveCampaign.Execute();
+                    CampaignManager.RemoveCampaign();
                     break;
                 case 2:
-                    ViewAllCampaigns();
+                    CampaignManager.ViewAllCampaigns();
                     break;
                 case 3:
-                    TopMenu.ShowMenu();  // Return to Top Menu
+                    TopMenu.ShowMenu();
                     break;
                 default:
                     break;
             }
-        }
-
-        private static void ViewAllCampaigns()
-        {
-            // Logic to display all campaigns
-            Console.WriteLine("Viewing all campaigns...");
-            Console.ReadLine();  // Pause for demo purposes
         }
     }
 }

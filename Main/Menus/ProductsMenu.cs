@@ -42,7 +42,7 @@ namespace Kassan.Menus
             Console.Clear();
             Console.WriteLine("Add Product");
 
-            // Get product details from the user
+            // Get Product details from the user
             Console.Write("Enter Product Name: ");
             string name = Console.ReadLine();
             Console.Write("Enter Product Code: ");
@@ -66,12 +66,12 @@ namespace Kassan.Menus
             Console.Clear();
             Console.WriteLine("Remove Product");
 
-            // Get product code from the user
+            // Get Product code from the user
             Console.Write("Enter Product Code to Remove: ");
             string code = Console.ReadLine();
             var productStore = ProductStore.Instance();
 
-            // Find the product in the store
+            // Find the Product in the store
             Product productToRemove = productStore.FindProduct(code);
 
             if (productToRemove != null)

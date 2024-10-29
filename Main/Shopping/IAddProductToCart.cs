@@ -9,6 +9,6 @@ namespace Kassan.Shopping
 {
     internal interface IAddProductToCart
     {
-        void AddProductToCart(Product product);
+        void AddProductToCart(CartItem product);
     }
 }

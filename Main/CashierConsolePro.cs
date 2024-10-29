@@ -13,9 +13,8 @@ namespace Kassan
         public static void Start()
         {
 
-
             Console.Clear();
-            Console.WriteLine(Startscreen.startScreen);
+            Startscreen.Display();
             Console.ReadKey();
             Console.Clear();
             TopMenu.ShowMenu();

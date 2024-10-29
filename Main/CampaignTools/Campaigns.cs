@@ -16,6 +16,16 @@ namespace Kassan.CampaignTools
 
         private readonly string filePath = "campaigns.txt";
 
+        public void AddCampaign(Campaign campaign)
+        {
+            campaigns.Add(campaign);
+        }
+
+        public void RemoveCampaign(Campaign campaign)
+        {
+            campaigns.Remove(campaign);
+        }
+
         public void Read()
         {
             if (File.Exists(filePath))
@@ -26,26 +36,23 @@ namespace Kassan.CampaignTools
                     campaigns.Clear();
                     while ((line = reader.ReadLine()) != null)
                     {
-                        var data = line.Split(',');                     // OBS OBS! Funkar inte med DateOnly
+                        var data = line.Split(',');
                         if (data.Length == 4)
                         {
                             string campaignName = data[0];
-                            string campaignFromDate = data[1];
-                            string CampaignToDate = data[2];
-                            if (decimal.TryParse(data[3], out decimal discount))
+                            if (DateOnly.TryParse(data[1], out DateOnly campaignFromDate) &&
+                                DateOnly.TryParse(data[2], out DateOnly campaignToDate) &&
+                                decimal.TryParse(data[3], out decimal discount))
                             {
-                                campaigns.Add(new Campaign(campaignName, campaignFromDate, CampaignToDate, discount));
+                                campaigns.Add(new Campaign(campaignName, campaignFromDate, 
+                                    campaignToDate, discount));
                             }
-
                         }
                     }
                 }
             }
         }
-        //CampaignName = name;
-        //    CampaignFromDate = from;
-        //    CampaignToDate = to;
-        //    Discount = discount;
+
         public void Write()
         {
             using (StreamWriter writer = new StreamWriter(filePath))
@@ -53,12 +60,15 @@ namespace Kassan.CampaignTools
                 foreach (var campaign in campaigns)
                 {
                     writer.WriteLine(
-                        $"{campaign.CampaignName},{campaign.CampaignFromDate}," +
-                        $"{campaign.CampaignToDate},{campaign.Discount}");
-                   
+                        $"{campaign.CampaignName},{campaign.CampaignFromDate.ToString("yyyy-MM-dd")}," +
+                        $"{campaign.CampaignToDate.ToString("yyyy-MM-dd")},{campaign.Discount}");
                 }
-
             }
+        }
+
+        public List<Campaign> GetAllCampaigns()
+        {
+            return campaigns;
         }
 
         public static Campaigns Instance()
