@@ -61,12 +61,20 @@ namespace Kassan.CampaignTools
 
             string campaignName = InputValidator.GetString("\nEnter the name of the campaign to remove: ");
             var campaignToRemove = Campaigns.Instance().GetAllCampaigns()
-                .FirstOrDefault(c => c.CampaignName.Equals(campaignName, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(c => c.CampaignName.Equals(campaignName));
 
             if (campaignToRemove != null)
             {
                 Campaigns.Instance().RemoveCampaign(campaignToRemove);
-                // Need to delete from products that had the campaign.
+
+                foreach (var product in ProductStore.Instance().GetAllProducts())
+                {
+                    if (product.Campaigns.Contains(campaignToRemove))
+                    {
+                        product.Campaigns.Remove(campaignToRemove);
+                    }
+                }
+
                 Console.WriteLine($"Campaign '{campaignName}' removed successfully.");
             }
             else

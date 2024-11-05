@@ -8,7 +8,7 @@ namespace Kassan
     {
         public static void Start()
         {
-
+            // need to load campaigns and check if date is ok, if not, remove
             Console.Clear();
             Startscreen.Display();
             TopMenu.ShowMenu();
