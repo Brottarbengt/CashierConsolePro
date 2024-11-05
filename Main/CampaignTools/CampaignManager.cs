@@ -13,6 +13,8 @@ namespace Kassan.CampaignTools
 
         public static void AddCampaign()
         {
+            
+            Campaigns campaigns = Campaigns.Instance();
 
             Console.Clear();
             Console.WriteLine("Add Campaign");
@@ -29,23 +31,19 @@ namespace Kassan.CampaignTools
 
             if (!string.IsNullOrEmpty(campaignProducts))
             {
-                // Split and process each product code
                 string[] productCodes = campaignProducts.Split(',');
 
                 foreach (string code in productCodes)
                 {
                     string trimmedCode = code.Trim();
 
-                    // Use ProductStore to find each product by code
-                    Product product = ProductStore.Instance().FindProduct(trimmedCode);
+                    Product productToAdd = ProductStore.Instance().FindProduct(trimmedCode);
 
-                    if (product != null)
+                    if (productToAdd != null)
                     {
-                        // Add the product to the campaign's product list
-                        campaign.AddProduct(product);
+                        campaigns.AddCampaign(campaign);
 
-                        // Optionally, add the campaign to the product's campaigns list if applicable
-                        product.Campaigns.Add(campaign);
+                        productToAdd.Campaigns.Add(campaign);
                     }
                     else
                     {
@@ -58,7 +56,7 @@ namespace Kassan.CampaignTools
             }
         }
 
-        private static void RemoveCampaign()
+        public static void RemoveCampaign()
         {
             Console.Clear();
             Console.WriteLine("Remove Campaign");
@@ -84,7 +82,7 @@ namespace Kassan.CampaignTools
             Console.ReadKey();
         }
 
-        private static void ViewAllCampaigns()
+        public static void ViewAllCampaigns()
         {
             Console.Clear();
             Console.WriteLine("All Campaigns");

@@ -29,6 +29,7 @@ namespace Kassan.Products
         {
             products.Remove(product);
         }
+        
 
         
         public void Write()

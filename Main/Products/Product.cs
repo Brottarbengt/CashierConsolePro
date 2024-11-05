@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Kassan.Products
 {
     public class Product
@@ -14,7 +15,7 @@ namespace Kassan.Products
         public decimal Price => CalculatePrice();
         public decimal ListPrice { get; set; }
         public PriceType PriceType { get; }
-        public Campaign[] Campaigns { get; }
+        public List<Campaign> Campaigns { get; }
 
 
         public Product(string name, string productCode, decimal listPrice, PriceType priceType)
@@ -39,6 +40,7 @@ namespace Kassan.Products
             }
             return price;
         }
+        
     }
 
 
