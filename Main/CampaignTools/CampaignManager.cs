@@ -1,4 +1,5 @@
-﻿using Kassan.Utilities;
+﻿using Kassan.Products;
+using Kassan.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace Kassan.CampaignTools
 {
     public static class CampaignManager
     {
+
         public static void AddCampaign()
         {
-            
+
             Console.Clear();
             Console.WriteLine("Add Campaign");
 
@@ -19,18 +21,44 @@ namespace Kassan.CampaignTools
             DateOnly campaignFromDate = InputValidator.GetDateOnly("Enter campaign from date (yyyy-mm-dd): ");
             DateOnly campaignToDate = InputValidator.GetDateOnly("Enter campaign to date (yyyy-mm-dd): ");
             decimal discount = InputValidator.GetDecimal("Enter discount percentage: ");
-            
+
             Campaign campaign = new Campaign(campaignName, campaignFromDate, campaignToDate, discount);
             Campaigns.Instance().AddCampaign(campaign);
-            Console.WriteLine("Enter product codes to be in campaign separate with , : ");
+            Console.WriteLine("Enter product codes to be in campaign separated by commas: ");
             string campaignProducts = Console.ReadLine();
-            // logic for adding to Product.campaigns, refactor to new method()?
 
-            Console.WriteLine("Campaign added successfully.");
-            Console.ReadKey();
+            if (!string.IsNullOrEmpty(campaignProducts))
+            {
+                // Split and process each product code
+                string[] productCodes = campaignProducts.Split(',');
+
+                foreach (string code in productCodes)
+                {
+                    string trimmedCode = code.Trim();
+
+                    // Use ProductStore to find each product by code
+                    Product product = ProductStore.Instance().FindProduct(trimmedCode);
+
+                    if (product != null)
+                    {
+                        // Add the product to the campaign's product list
+                        campaign.AddProduct(product);
+
+                        // Optionally, add the campaign to the product's campaigns list if applicable
+                        product.Campaigns.Add(campaign);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Product with code {trimmedCode} not found.");
+                    }
+                }
+
+                Console.WriteLine("Campaign added successfully.");
+                Console.ReadKey();
+            }
         }
 
-        public static void RemoveCampaign()
+        private static void RemoveCampaign()
         {
             Console.Clear();
             Console.WriteLine("Remove Campaign");
@@ -44,6 +72,7 @@ namespace Kassan.CampaignTools
             if (campaignToRemove != null)
             {
                 Campaigns.Instance().RemoveCampaign(campaignToRemove);
+                // Need to delete from products that had the campaign.
                 Console.WriteLine($"Campaign '{campaignName}' removed successfully.");
             }
             else
@@ -55,7 +84,7 @@ namespace Kassan.CampaignTools
             Console.ReadKey();
         }
 
-        public static void ViewAllCampaigns()
+        private static void ViewAllCampaigns()
         {
             Console.Clear();
             Console.WriteLine("All Campaigns");

@@ -12,7 +12,7 @@ namespace Kassan.Shopping
         public string Date { get; set; }
         public double Total { get; set; }
         public static int receiptCount = 0;
-        private string receiptPath = "receipts.txt"; 
+        private string receiptPath = "/receipts.txt"; 
         private ShoppingCart cart;
 
         public Receipt(ShoppingCart shoppingCart)
@@ -21,12 +21,13 @@ namespace Kassan.Shopping
             Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             Total = CalculateSum(cart);
             receiptCount++;
+            
         }
 
         // Write receipt to file
         public void Write()
         {
-            using (StreamWriter writer = new StreamWriter(receiptPath, true))
+            using (StreamWriter writer = new(receiptPath, true))
             {
                 writer.WriteLine($"Receipt #{receiptCount}");
                 writer.WriteLine($"Date: {Date}");

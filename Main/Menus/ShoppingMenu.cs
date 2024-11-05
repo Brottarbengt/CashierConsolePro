@@ -22,7 +22,7 @@ namespace Kassan.Menus
                 Console.WriteLine($"{item.Product.Name} , {item.Amount} * {item.Product.Price} = {item.Total}");
             
             }
-            Console.WriteLine("Commands: \n <product code> <amount> / PAY for check out");
+            Console.WriteLine("Commands: \n <product code> <amount> Or just PAY for check out");
             var commands = Console.ReadLine().Split(" ");
             if ("PAY".Equals(commands[0]))
             {

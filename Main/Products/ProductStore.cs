@@ -18,19 +18,19 @@ namespace Kassan.Products
         {
 
         }
-        // Add a Product to the list
+        
         public void AddProduct(Product product)
         {
             products.Add(product);
         }
 
-        // Remove a Product from the list
+        
         public void RemoveProduct(Product product)
         {
             products.Remove(product);
         }
 
-        // Write the list of products to a file
+        
         public void Write()
         {
             using (StreamWriter writer = new StreamWriter(filePath))
@@ -44,7 +44,7 @@ namespace Kassan.Products
             }
         }
 
-        // Read the list of products from a file
+        
         public void Read()
         {
             if (File.Exists(filePath))
@@ -101,7 +101,3 @@ namespace Kassan.Products
     }
 }
 
-//void AddProduct(Product productToAdd) {}
-//void RemoveProduct(Product Product) 
-//void Persist() //save products to file -- finns som interface (Bra eller dåligt?)
-//void Load() // read products from file -- finns som interface
