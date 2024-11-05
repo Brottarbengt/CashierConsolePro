@@ -1,8 +1,4 @@
-﻿using Kassan.CampaignTools;
-using Kassan.FileManagement;
-using Kassan.Products;
-using System.Collections.Generic;
-using System.IO;
+﻿using Kassan.FileManagement;
 
 namespace Kassan.Products
 {

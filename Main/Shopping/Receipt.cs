@@ -1,9 +1,4 @@
 ﻿using Kassan.FileManagement;
-using Kassan.Products;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace Kassan.Shopping
 {
@@ -34,7 +29,9 @@ namespace Kassan.Shopping
                 writer.WriteLine("Items:");
                 foreach (var product in cart.GetAllProducts())
                 {
-                    writer.WriteLine($"{product.Product.Name} - {product.Product.ListPrice:C} Discount {product.Product.Price - product.Product.ListPrice}");
+                    writer.WriteLine($"{product.Product.Name} - " +
+                        $"{product.Product.ListPrice:C} " +
+                        $"Discount {product.Product.Price - product.Product.ListPrice}");
                 }
                 writer.WriteLine($"Total: {Total:C}");
                 writer.WriteLine("----------------------------------");
@@ -55,14 +52,12 @@ namespace Kassan.Shopping
             }
         }
 
-        // Create receipt and save it to a file
         public void CreateReceipt()
         {
             Write();
             Console.WriteLine("Receipt created and saved.");
         }
 
-        // Display the receipt and wait for user
         public void DisplayReceipt()
         {
             Console.Clear();
@@ -78,13 +73,11 @@ namespace Kassan.Shopping
             Console.ReadKey();
         }
         
-        // Show all receipts from receipt file
         public void ShowAllReceipts()
         {
             Read();
         }
 
-        // Calculate the total sum in the cart
         public double CalculateSum(ShoppingCart cart)
         {
             double totalSum = 0;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Kassan.Products
 {
@@ -13,7 +9,6 @@ namespace Kassan.Products
             Console.Clear();
             Console.WriteLine("Add Product");
 
-            // Get Product details from the user
             Console.Write("Enter Product Name: ");
             string name = Console.ReadLine();
             Console.Write("Enter Product Code: ");
@@ -23,7 +18,7 @@ namespace Kassan.Products
             Console.Write("Enter Price type (Weight = 0, Each = 1): ");
             PriceType priceType = Enum.Parse<PriceType>(Console.ReadLine());
 
-            // Create a new Product and add it to the store
+            
             Product newProduct = new Product(name, code, listPrice, priceType);
             ProductStore.Instance().AddProduct(newProduct);
 
@@ -36,12 +31,10 @@ namespace Kassan.Products
             Console.Clear();
             Console.WriteLine("Remove Product from store");
 
-            // Get Product code from the user
             Console.Write("Enter Product Code to Remove: ");
             string code = Console.ReadLine();
             var productStore = ProductStore.Instance();
 
-            // Find the Product in the store
             Product productToRemove = productStore.FindProduct(code);
 
             if (productToRemove != null)

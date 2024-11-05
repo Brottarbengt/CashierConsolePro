@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Kassan.Menus
 {
@@ -26,7 +22,7 @@ namespace Kassan.Menus
                     ProductsMenu.ShowMenu();
                     break;
                 case 2:
-                    // NewCustomer logic will be added later
+                    ShoppingMenu.CashierConsole();
                     break;
                 default:
                     break;

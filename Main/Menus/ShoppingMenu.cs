@@ -1,26 +1,20 @@
 ﻿using Kassan.Products;
 using Kassan.Shopping;
-using Kassan.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
+
 
 
 namespace Kassan.Menus
 {
-    internal class ShoppingMenu
+    public static class ShoppingMenu
     {
-        public void CashierConsole()
+        public static void CashierConsole()
         {
             ShoppingCart cart = new ShoppingCart();
             Console.WriteLine("|Cashier console|");
             foreach (var item in cart.GetAllProducts())
             {
                 Console.WriteLine($"{item.Product.Name} , {item.Amount} * {item.Product.Price} = {item.Total}");
-            
+
             }
             Console.WriteLine("Commands: \n <product code> <amount> Or just PAY for check out");
             var commands = Console.ReadLine().Split(" ");
@@ -30,7 +24,7 @@ namespace Kassan.Menus
                 receipt.CreateReceipt();
                 receipt.DisplayReceipt();
             }
-            else 
+            else
             {
                 var productStore = ProductStore.Instance();
                 var product = productStore.FindProduct(commands[0]);

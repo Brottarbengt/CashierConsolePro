@@ -1,5 +1,4 @@
-﻿
-using Kassan;
+﻿using Kassan;
 
 namespace Main
 {

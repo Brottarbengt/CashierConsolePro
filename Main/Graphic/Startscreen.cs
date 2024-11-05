@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Kassan.Graphic
 {
@@ -34,8 +30,6 @@ namespace Kassan.Graphic
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("               ( O O P inside! ) ");
             Console.ResetColor();
-
-            
             Console.ReadKey();
         }
     }
