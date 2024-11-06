@@ -1,6 +1,6 @@
 ﻿
 
-namespace Kassan.FileManagement
+namespace CashierConsolePro.FileManagement
 {
     
     internal interface IFileReader

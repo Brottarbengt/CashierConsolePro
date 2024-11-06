@@ -1,7 +1,7 @@
-﻿using Kassan.FileManagement;
+﻿using CashierConsolePro.FileManagement;
 
 
-namespace Kassan.CampaignTools
+namespace CashierConsolePro.CampaignTools
 {
     public class Campaigns : IFileReader, IFileWriter
     {

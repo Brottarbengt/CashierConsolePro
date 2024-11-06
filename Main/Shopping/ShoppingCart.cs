@@ -1,6 +1,6 @@
 ﻿
 
-namespace Kassan.Shopping
+namespace CashierConsolePro.Shopping
 {
     internal class ShoppingCart : IAddProductToCart, IRemoveFromCart
     {

@@ -1,6 +1,6 @@
-﻿using Kassan.CampaignTools;
+﻿using CashierConsolePro.CampaignTools;
 
-namespace Kassan.Menus
+namespace CashierConsolePro.Menus
 {
     public static class CampaignMenu
     {

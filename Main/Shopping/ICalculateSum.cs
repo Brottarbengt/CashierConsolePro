@@ -1,5 +1,5 @@
 ﻿
-namespace Kassan.Shopping
+namespace CashierConsolePro.Shopping
 {
     internal interface ICalculateSum
     {

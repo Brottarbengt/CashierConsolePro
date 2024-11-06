@@ -1,7 +1,7 @@
-﻿using Kassan.Products;
+﻿using CashierConsolePro.Products;
 
 
-namespace Kassan.Shopping
+namespace CashierConsolePro.Shopping
 {
     internal class CartItem
     {

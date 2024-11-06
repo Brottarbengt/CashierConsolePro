@@ -1,6 +1,6 @@
 ﻿
 
-namespace Kassan.Products
+namespace CashierConsolePro.Products
 {
     public static class ProductManager
     {

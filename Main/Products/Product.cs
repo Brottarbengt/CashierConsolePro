@@ -1,8 +1,8 @@
-﻿using Kassan.CampaignTools;
+﻿using CashierConsolePro.CampaignTools;
 
 
 
-namespace Kassan.Products
+namespace CashierConsolePro.Products
 {
     public class Product
     {

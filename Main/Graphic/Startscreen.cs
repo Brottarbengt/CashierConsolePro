@@ -1,6 +1,6 @@
 ﻿
 
-namespace Kassan.Graphic
+namespace CashierConsolePro.Graphic
 {
     public static class Startscreen
     {

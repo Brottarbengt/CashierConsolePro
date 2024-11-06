@@ -1,8 +1,8 @@
-﻿using Kassan.Products;
-using Kassan.Utilities;
+﻿using CashierConsolePro.Products;
+using CashierConsolePro.Utilities;
 
 
-namespace Kassan.CampaignTools
+namespace CashierConsolePro.CampaignTools
 {
     public static class CampaignManager
     {

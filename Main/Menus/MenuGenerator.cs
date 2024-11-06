@@ -1,6 +1,6 @@
 ﻿
 
-namespace Kassan.Menus
+namespace CashierConsolePro.Menus
 {
     public static class MenuGenerator
     {

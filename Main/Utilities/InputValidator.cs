@@ -1,5 +1,5 @@
 ﻿
-namespace Kassan.Utilities
+namespace CashierConsolePro.Utilities
 {
     public static class InputValidator
     {

@@ -1,6 +1,6 @@
 ﻿
 
-namespace Kassan.CampaignTools
+namespace CashierConsolePro.CampaignTools
 {
     public class Campaign
     {

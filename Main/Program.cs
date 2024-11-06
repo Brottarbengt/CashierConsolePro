@@ -1,4 +1,4 @@
-﻿using Kassan;
+﻿using CashierConsolePro;
 
 namespace Main
 {
@@ -7,7 +7,7 @@ namespace Main
         static void Main(string[] args)
         {
 
-            CashierConsolePro.Start();
+            CashierConsolePro.CashierConsolePro.Start();
             
         }
     }

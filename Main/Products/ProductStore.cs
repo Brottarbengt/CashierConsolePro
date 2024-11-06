@@ -1,6 +1,6 @@
-﻿using Kassan.FileManagement;
+﻿using CashierConsolePro.FileManagement;
 
-namespace Kassan.Products
+namespace CashierConsolePro.Products
 {
     public class ProductStore : IFileReader, IFileWriter
     {

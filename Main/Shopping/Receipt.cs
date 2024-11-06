@@ -1,6 +1,6 @@
-﻿using Kassan.FileManagement;
+﻿using CashierConsolePro.FileManagement;
 
-namespace Kassan.Shopping
+namespace CashierConsolePro.Shopping
 {
     internal class Receipt : IFileWriter, IFileReader, IPay, ICalculateSum
     {

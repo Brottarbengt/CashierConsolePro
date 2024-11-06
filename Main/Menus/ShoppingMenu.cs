@@ -1,9 +1,9 @@
-﻿using Kassan.Products;
-using Kassan.Shopping;
+﻿using CashierConsolePro.Products;
+using CashierConsolePro.Shopping;
 
 
 
-namespace Kassan.Menus
+namespace CashierConsolePro.Menus
 {
     public static class ShoppingMenu
     {
