@@ -11,10 +11,6 @@ namespace CashierConsolePro
         public static void Start()
         {
 
-            //Need Code to check for uniqe product codes = cant enter product if exists
-            // Same with Campaign
-            // First load all products from file and store in ProductStore
-            // then load campaigns from file and check if date is ok, if not, remove from campaign and products
             StartupLoad();
             Console.Clear();
             Startscreen.Display();
@@ -33,9 +29,9 @@ namespace CashierConsolePro
                 DateOnly today = DateOnly.FromDateTime(DateTime.Now);
                 var campaigns = Campaigns.Instance().GetAllCampaigns();
 
-                foreach (var campaign in campaigns.ToList()) // Use ToList() to safely modify collection
+                foreach (var campaign in campaigns.ToList()) // Use ToList() to safely modify collection - new knowledge aquired!
                 {
-                    if (campaign.CampaignToDate < today) // Check if campaign has expired
+                    if (campaign.CampaignToDate < today)
                     {
                         Campaigns.Instance().RemoveCampaign(campaign);
 

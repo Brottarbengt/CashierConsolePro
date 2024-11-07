@@ -3,6 +3,6 @@ namespace CashierConsolePro.Shopping
 {
     internal interface ICalculateSum
     {
-        double CalculateSum(ShoppingCart cart);
+        decimal CalculateSum(ShoppingCart cart);
     }
 }

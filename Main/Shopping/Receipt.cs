@@ -5,7 +5,7 @@ namespace CashierConsolePro.Shopping
     internal class Receipt : IFileWriter, IFileReader, IPay, ICalculateSum
     {
         public string Date { get; set; }
-        public double Total { get; set; }
+        public decimal Total { get; set; }
         public static int receiptCount = 0;
         private string receiptPath = "/receipts.txt"; 
         private ShoppingCart cart;
@@ -19,7 +19,6 @@ namespace CashierConsolePro.Shopping
             
         }
 
-        // Write receipt to file
         public void Write()
         {
             using (StreamWriter writer = new(receiptPath, true))
@@ -38,7 +37,6 @@ namespace CashierConsolePro.Shopping
             }
         }
 
-        // Read receipts from file
         public void Read()
         {
             if (File.Exists(receiptPath))
@@ -78,13 +76,13 @@ namespace CashierConsolePro.Shopping
             Read();
         }
 
-        public double CalculateSum(ShoppingCart cart)
+        public decimal CalculateSum(ShoppingCart cart)
         {
-            double totalSum = 0;
+            decimal totalSum = 0;
 
             foreach (var item in cart.GetAllProducts())
             {
-                totalSum += (double)item.Total; 
+                totalSum += (decimal)item.Total; 
             }
 
             return totalSum;

@@ -40,5 +40,19 @@ namespace CashierConsolePro.Utilities
             }
             return value;
         }
+        public static bool IsPayCommand(string input)
+        {
+            return "PAY".Equals(input, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static bool IsValidProductCode(string input)
+        {
+            return !string.IsNullOrWhiteSpace(input) && input.All(char.IsLetterOrDigit);
+        }
+
+        public static bool IsValidAmount(string input)
+        {
+            return int.TryParse(input, out int amount) && amount > 0;
+        }
     }
 }

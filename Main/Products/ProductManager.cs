@@ -26,7 +26,7 @@ namespace CashierConsolePro.Products
                 Console.WriteLine("Invalid input. Please enter 0 for Weight or 1 for Each.");
             }
 
-            if (ProductStore.Instance().IsProductUnique(name, code))  // Call unique check method
+            if (ProductStore.Instance().IsProductUnique(name, code))  
             {
                 Product newProduct = new Product(name, code, listPrice, priceType);
                 ProductStore.Instance().AddProduct(newProduct);
@@ -74,7 +74,10 @@ namespace CashierConsolePro.Products
             foreach (var product in productStore.GetAllProducts())
             {                
                 Console.WriteLine(
-                  $"{product.Name}, {product.ProductCode}, {product.ListPrice} / Discounted: {product.Price}, {product.PriceType}");
+                  $"{product.Name}, " +
+                  $"Code: {product.ProductCode}, " +
+                  $"Price: {product.ListPrice} / Discounted: {product.Price}, " +
+                  $"{product.PriceType}");
             }
             Console.ReadKey();
             
