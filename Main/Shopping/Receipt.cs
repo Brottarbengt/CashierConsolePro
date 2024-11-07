@@ -1,6 +1,6 @@
-﻿using CashierConsolePro.FileManagement;
+﻿using CCP.FileManagement;
 
-namespace CashierConsolePro.Shopping
+namespace CCP.Shopping
 {
     internal class Receipt : IFileWriter, IPay, ICalculateSum
     {

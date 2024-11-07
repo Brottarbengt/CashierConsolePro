@@ -1,6 +1,6 @@
 ﻿
 
-namespace CashierConsolePro.CampaignTools
+namespace CCP.CampaignTools
 {
     public class Campaign
     {

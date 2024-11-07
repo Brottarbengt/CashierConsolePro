@@ -1,8 +1,8 @@
-﻿using CashierConsolePro.CampaignTools;
+﻿using CCP.CampaignTools;
 
 
 
-namespace CashierConsolePro.Products
+namespace CCP.Products
 {
     public class Product
     {

@@ -1,6 +1,6 @@
 ﻿
 
-namespace CashierConsolePro.Graphic
+namespace CCP.Graphic
 {
     public static class Startscreen
     {

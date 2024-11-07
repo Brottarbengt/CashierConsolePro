@@ -1,7 +1,7 @@
-﻿using CashierConsolePro.FileManagement;
+﻿using CCP.FileManagement;
 
 
-namespace CashierConsolePro.CampaignTools
+namespace CCP.CampaignTools
 {
     public class Campaigns : IFileReader, IFileWriter
     {

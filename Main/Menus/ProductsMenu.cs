@@ -1,7 +1,7 @@
-﻿using CashierConsolePro.Products;
+﻿using CCP.Products;
 
 
-namespace CashierConsolePro.Menus
+namespace CCP.Menus
 {
     public static class ProductsMenu 
     {

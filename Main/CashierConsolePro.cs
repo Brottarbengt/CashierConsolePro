@@ -1,10 +1,10 @@
-﻿using CashierConsolePro.CampaignTools;
-using CashierConsolePro.Graphic;
-using CashierConsolePro.Menus;
-using CashierConsolePro.Products;
+﻿using CCP.CampaignTools;
+using CCP.Graphic;
+using CCP.Menus;
+using CCP.Products;
 
 
-namespace CashierConsolePro
+namespace CCP
 {
     public static class CashierConsolePro
     {

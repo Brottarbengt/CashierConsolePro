@@ -1,10 +1,10 @@
-﻿using CashierConsolePro.Products;
-using CashierConsolePro.Shopping;
-using CashierConsolePro.Utilities;
+﻿using CCP.Products;
+using CCP.Shopping;
+using CCP.Utilities;
 
 
 
-namespace CashierConsolePro.Menus
+namespace CCP.Menus
 {
     public static class ShoppingMenu
     {

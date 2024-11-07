@@ -1,6 +1,6 @@
 ﻿
 
-namespace CashierConsolePro.Shopping
+namespace CCP.Shopping
 {
     internal class ShoppingCart : IAddProductToCart, IRemoveFromCart
     {

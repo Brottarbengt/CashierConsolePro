@@ -1,6 +1,6 @@
 ﻿
 
-namespace CashierConsolePro.FileManagement
+namespace CCP.FileManagement
 {
     
     internal interface IFileWriter

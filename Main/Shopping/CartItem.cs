@@ -1,7 +1,7 @@
-﻿using CashierConsolePro.Products;
+﻿using CCP.Products;
 
 
-namespace CashierConsolePro.Shopping
+namespace CCP.Shopping
 {
     internal class CartItem
     {

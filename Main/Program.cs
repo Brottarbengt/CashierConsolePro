@@ -1,4 +1,4 @@
-﻿using CashierConsolePro;
+﻿using CCP;
 
 namespace Main
 {
@@ -7,7 +7,7 @@ namespace Main
         static void Main(string[] args)
         {
 
-            CashierConsolePro.CashierConsolePro.Start();
+            CashierConsolePro.Start();
             
         }
     }

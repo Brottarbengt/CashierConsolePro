@@ -1,8 +1,8 @@
 ﻿
 
-using CashierConsolePro.Utilities;
+using CCP.Utilities;
 
-namespace CashierConsolePro.Products
+namespace CCP.Products
 {
     public static class ProductManager
     {

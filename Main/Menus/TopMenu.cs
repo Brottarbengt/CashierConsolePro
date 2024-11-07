@@ -1,6 +1,6 @@
 ﻿
 
-namespace CashierConsolePro.Menus
+namespace CCP.Menus
 {
     public static class TopMenu
     {

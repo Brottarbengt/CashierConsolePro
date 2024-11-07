@@ -1,6 +1,6 @@
-﻿using CashierConsolePro.CampaignTools;
+﻿using CCP.CampaignTools;
 
-namespace CashierConsolePro.Menus
+namespace CCP.Menus
 {
     public static class CampaignMenu
     {

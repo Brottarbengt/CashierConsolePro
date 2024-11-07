@@ -1,6 +1,6 @@
-﻿using CashierConsolePro.FileManagement;
+﻿using CCP.FileManagement;
 
-namespace CashierConsolePro.Products
+namespace CCP.Products
 {
     public class ProductStore : IFileReader, IFileWriter
     {

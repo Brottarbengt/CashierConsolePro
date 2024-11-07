@@ -1,8 +1,8 @@
-﻿using CashierConsolePro.Products;
-using CashierConsolePro.Utilities;
+﻿using CCP.Products;
+using CCP.Utilities;
 
 
-namespace CashierConsolePro.CampaignTools
+namespace CCP.CampaignTools
 {
     public static class CampaignManager
     {

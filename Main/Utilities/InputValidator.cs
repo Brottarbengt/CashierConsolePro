@@ -1,5 +1,5 @@
 ﻿
-namespace CashierConsolePro.Utilities
+namespace CCP.Utilities
 {
     public static class InputValidator
     {
