@@ -48,4 +48,6 @@ namespace CashierConsolePro.Menus
                     Console.WriteLine("Invalid input. Please enter a valid product code and amount, or type 'PAY' to checkout.");
                 }
             }
+        }
+    }
 }
