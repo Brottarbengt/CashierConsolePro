@@ -20,6 +20,7 @@ namespace CashierConsolePro.Products
             ProductCode = productCode;
             ListPrice = listPrice;
             PriceType = priceType;
+            Campaigns = new List<Campaign>();
         }
 
         public override string ToString()
@@ -30,6 +31,7 @@ namespace CashierConsolePro.Products
         private decimal CalculatePrice()
         {
             decimal price = ListPrice;
+            if (Campaigns !=null)
             foreach (var campaign in Campaigns)
             {
                 price = price * ( 1 - (campaign.Discount / 100));

@@ -16,13 +16,20 @@ namespace CashierConsolePro.CampaignTools
             Console.WriteLine("Add Campaign");
 
             string campaignName = InputValidator.GetString("Enter Campaign Name: ");
+
+            if (!campaigns.IsCampaignNameUnique(campaignName))
+            {
+                Console.WriteLine("A campaign with the same name already exists. Please try again.");
+                return;
+            }
+
             DateOnly campaignFromDate = InputValidator.GetDateOnly("Enter campaign from date (yyyy-mm-dd): ");
             DateOnly campaignToDate = InputValidator.GetDateOnly("Enter campaign to date (yyyy-mm-dd): ");
             decimal discount = InputValidator.GetDecimal("Enter discount percentage: ");
 
             Campaign campaign = new Campaign(campaignName, campaignFromDate, campaignToDate, discount);
             Campaigns.Instance().AddCampaign(campaign);
-            Console.WriteLine("Enter product codes to be in campaign separated by commas: ");
+            Console.WriteLine("Enter product codes to be in campaign separated by commas if more than one: ");
             string campaignProducts = Console.ReadLine();
 
             if (!string.IsNullOrEmpty(campaignProducts))
@@ -60,6 +67,7 @@ namespace CashierConsolePro.CampaignTools
             ViewAllCampaigns();
 
             string campaignName = InputValidator.GetString("\nEnter the name of the campaign to remove: ");
+            
             var campaignToRemove = Campaigns.Instance().GetAllCampaigns()
                 .FirstOrDefault(c => c.CampaignName.Equals(campaignName));
 

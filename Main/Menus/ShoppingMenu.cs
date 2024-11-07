@@ -32,7 +32,7 @@ namespace CashierConsolePro.Menus
                 var cartItem = new CartItem(amount, product);
                 cart.AddProductToCart(cartItem);
             }
-
+            // Need to input validate 
         }
     }
 }

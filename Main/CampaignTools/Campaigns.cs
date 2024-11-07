@@ -8,7 +8,7 @@ namespace CashierConsolePro.CampaignTools
         private static Campaigns instance;
         private List<Campaign> campaigns = new List<Campaign>();
 
-        private readonly string filePath = "campaigns.txt";
+        private readonly string filePath = "./campaigns.txt";
 
         public void AddCampaign(Campaign campaign)
         {
@@ -72,6 +72,11 @@ namespace CashierConsolePro.CampaignTools
                 instance = new Campaigns();
             }
             return instance;
+        }
+
+        public bool IsCampaignNameUnique(string campaignName)
+        {
+            return !campaigns.Any(c => c.CampaignName.Equals(campaignName, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

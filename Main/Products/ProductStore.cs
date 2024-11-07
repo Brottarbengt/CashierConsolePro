@@ -8,7 +8,7 @@ namespace CashierConsolePro.Products
         private static ProductStore instance;
         private List<Product> products = new List<Product>();
         
-        private readonly string filePath = "products.txt"; // File to store products.
+        private readonly string filePath = "./products.txt"; // File to store products.
 
         private ProductStore()
         {
@@ -93,6 +93,11 @@ namespace CashierConsolePro.Products
                 instance = new ProductStore();
             }
             return instance;
+        }
+        public bool IsProductUnique(string name, string productCode)
+        {
+            return !products.Any(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase) ||
+                                      p.ProductCode.Equals(productCode, StringComparison.OrdinalIgnoreCase));
         }
 
     }

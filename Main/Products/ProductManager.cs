@@ -1,5 +1,7 @@
 ﻿
 
+using CashierConsolePro.Utilities;
+
 namespace CashierConsolePro.Products
 {
     public static class ProductManager
@@ -9,27 +11,41 @@ namespace CashierConsolePro.Products
             Console.Clear();
             Console.WriteLine("Add Product");
 
-            Console.Write("Enter Product Name: ");
-            string name = Console.ReadLine();
-            Console.Write("Enter Product Code: ");
-            string code = Console.ReadLine();
-            Console.Write("Enter Product Price: ");
-            decimal listPrice = decimal.Parse(Console.ReadLine());
-            Console.Write("Enter Price type (Weight = 0, Each = 1): ");
-            PriceType priceType = Enum.Parse<PriceType>(Console.ReadLine());
+            string name = InputValidator.GetString("Enter Product Name: ");
+            string code = InputValidator.GetString("Enter Product Code: ");
+            decimal listPrice = InputValidator.GetDecimal("Enter Product Price: ");
+            PriceType priceType;
 
-            
-            Product newProduct = new Product(name, code, listPrice, priceType);
-            ProductStore.Instance().AddProduct(newProduct);
+            while (true)
+            {
+                string priceTypeInput = InputValidator.GetString("Enter Price type (Weight = 0, Each = 1): ");
+                if (Enum.TryParse(priceTypeInput, out priceType))
+                {
+                    break;
+                }
+                Console.WriteLine("Invalid input. Please enter 0 for Weight or 1 for Each.");
+            }
 
-            Console.WriteLine("Product added successfully.");
-            Console.ReadKey();            
+            if (ProductStore.Instance().IsProductUnique(name, code))  // Call unique check method
+            {
+                Product newProduct = new Product(name, code, listPrice, priceType);
+                ProductStore.Instance().AddProduct(newProduct);
+                ProductStore.Instance().Write();
+                Console.WriteLine("Product added successfully.");
+            }
+            else
+            {
+                Console.WriteLine("A product with the same name or code already exists.");
+            }
+
+            Console.ReadKey();
         }
 
         public static void RemoveProduct()
-        {
+        {            
             Console.Clear();
             Console.WriteLine("Remove Product from store");
+            ShowAllProducts();
 
             Console.Write("Enter Product Code to Remove: ");
             string code = Console.ReadLine();
@@ -56,12 +72,13 @@ namespace CashierConsolePro.Products
             var productStore = ProductStore.Instance();
             Console.WriteLine("\n  Products in store: ");
             foreach (var product in productStore.GetAllProducts())
-            {
+            {                
                 Console.WriteLine(
-                    $"{product.Name}, {product.ProductCode}, {product.ListPrice} / {product.Price}, {product.PriceType}");
+                  $"{product.Name}, {product.ProductCode}, {product.ListPrice} / Discounted: {product.Price}, {product.PriceType}");
             }
             Console.ReadKey();
             
         }
+
     }
 }
