@@ -2,52 +2,66 @@
 
 namespace CashierConsolePro.Shopping
 {
-    internal class Receipt : IFileWriter, IFileReader, IPay, ICalculateSum
+    internal class Receipt : IFileWriter, IPay, ICalculateSum
     {
         public string Date { get; set; }
         public decimal Total { get; set; }
-        public static int receiptCount = 0;
-        private string receiptPath = "/receipts.txt"; 
+        private string receiptPath;
         private ShoppingCart cart;
+        private int receiptCount;
 
         public Receipt(ShoppingCart shoppingCart)
         {
             cart = shoppingCart;
             Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             Total = CalculateSum(cart);
-            receiptCount++;
-            
+
+            receiptCount = LoadReceiptCount();
+            receiptCount++;  
         }
 
+        private int LoadReceiptCount()
+        {
+            
+            string receiptCountFile = "receiptCount.txt";
+            if (File.Exists(receiptCountFile))
+            {
+                string lastCount = File.ReadAllText(receiptCountFile);
+                if (int.TryParse(lastCount, out int lastReceiptCount))
+                {
+                    return lastReceiptCount;
+                }
+            }
+            return 0;
+        }
+
+        private void SaveReceiptCount()
+        {
+            File.WriteAllText("receiptCount.txt", receiptCount.ToString());
+        }
+
+      
         public void Write()
         {
-            using (StreamWriter writer = new(receiptPath, true))
+            // Create the receipt file name based on today's date
+            string receiptFileName = $"RECEIPT_{DateTime.Now:yyyyMMdd}.txt";
+
+            using (StreamWriter writer = new(receiptFileName, true))
             {
                 writer.WriteLine($"Receipt #{receiptCount}");
                 writer.WriteLine($"Date: {Date}");
                 writer.WriteLine("Items:");
-                foreach (var product in cart.GetAllProducts())
+                foreach (var item in cart.GetAllProducts())
                 {
-                    writer.WriteLine($"{product.Product.Name} - " +
-                        $"{product.Product.ListPrice:C} " +
-                        $"Discount {product.Product.Price - product.Product.ListPrice}");
+                    writer.WriteLine($"{item.Product.Name} - " +
+                        $"{item.Product.ListPrice:C} " +
+                        $"Discount {item.Product.Price - item.Product.ListPrice}");
                 }
                 writer.WriteLine($"Total: {Total:C}");
-                writer.WriteLine("----------------------------------");
+                writer.WriteLine($"=== END OF RECEIPT ===");
             }
-        }
 
-        public void Read()
-        {
-            if (File.Exists(receiptPath))
-            {
-                string receipts = File.ReadAllText(receiptPath);
-                Console.WriteLine(receipts);
-            }
-            else
-            {
-                Console.WriteLine("No receipts available.");
-            }
+            SaveReceiptCount();
         }
 
         public void CreateReceipt()
@@ -70,23 +84,21 @@ namespace CashierConsolePro.Shopping
             Console.WriteLine("Press any key to return to menu...");
             Console.ReadKey();
         }
-        
-        public void ShowAllReceipts()
-        {
-            Read();
-        }
 
+        
         public decimal CalculateSum(ShoppingCart cart)
         {
             decimal totalSum = 0;
 
             foreach (var item in cart.GetAllProducts())
             {
-                totalSum += (decimal)item.Total; 
+                totalSum += (decimal)item.Total;
             }
 
             return totalSum;
         }
+
+        
     }
 }
 

@@ -6,7 +6,14 @@ namespace CashierConsolePro.Menus
     public static class ProductsMenu 
     {
 
-        private static string[] menuOptions = new string[] { "Add Product", "Remove Product", "Show All Products", "Back to Top Menu" };
+        private static string[] menuOptions = new string[] {
+            "Add Product",
+            "Remove Product",
+            "Show All Products",
+            "Change Product Name",
+            "Change Product Price",
+            "Back to Top Menu"
+        };
 
         public static void ShowMenu()
         {
@@ -18,7 +25,7 @@ namespace CashierConsolePro.Menus
             switch (selectedIndex)
             {
                 case 0:
-                    ProductManager.AddProduct(); 
+                    ProductManager.AddProduct();
                     break;
                 case 1:
                     ProductManager.RemoveProduct();
@@ -27,11 +34,17 @@ namespace CashierConsolePro.Menus
                     ProductManager.ShowAllProducts();
                     break;
                 case 3:
-                    TopMenu.ShowMenu();  
+                    ProductManager.ChangeProductName(); 
+                    break;
+                case 4:
+                    ProductManager.ChangeProductPrice(); 
+                    break;
+                case 5:
+                    TopMenu.ShowMenu();
                     break;
                 default:
                     break;
             }
-        }                
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace CashierConsolePro
 
             StartupLoad();
             Console.Clear();
-            Startscreen.Display();
+            Startscreen.Display();            
             TopMenu.ShowMenu();
             
             

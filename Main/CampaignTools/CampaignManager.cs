@@ -15,7 +15,7 @@ namespace CashierConsolePro.CampaignTools
             Console.Clear();
             Console.WriteLine("Add Campaign");
 
-            string campaignName = InputValidator.GetString("Enter Campaign Name: ");
+            string campaignName = GetCampaignName();
 
             if (!campaigns.IsCampaignNameUnique(campaignName))
             {
@@ -28,7 +28,7 @@ namespace CashierConsolePro.CampaignTools
             decimal discount = InputValidator.GetDecimal("Enter discount percentage: ");
 
             Campaign campaign = new Campaign(campaignName, campaignFromDate, campaignToDate, discount);
-            Campaigns.Instance().AddCampaign(campaign);
+           
             Console.WriteLine("Enter product codes to be in campaign separated by commas if more than one: ");
             string campaignProducts = Console.ReadLine();
 
@@ -44,8 +44,6 @@ namespace CashierConsolePro.CampaignTools
 
                     if (productToAdd != null)
                     {
-                        campaigns.AddCampaign(campaign);
-
                         productToAdd.Campaigns.Add(campaign);
                     }
                     else
@@ -54,9 +52,24 @@ namespace CashierConsolePro.CampaignTools
                     }
                 }
 
+                campaigns.AddCampaign(campaign);
                 Console.WriteLine("Campaign added successfully.");
                 Console.ReadKey();
             }
+        }
+        private static string GetCampaignName()
+        {
+            string name;
+            while (true)
+            {
+                name = InputValidator.GetString("Enter Campaign Name: ");
+                if (InputValidator.IsValidName(name))
+                {
+                    break;
+                }
+                Console.WriteLine("Campaign name cannot be empty.");
+            }
+            return name;
         }
 
         public static void RemoveCampaign()

@@ -20,7 +20,11 @@ namespace CashierConsolePro.Menus
 
                 foreach (var item in cart.GetAllProducts())
                 {
-                    Console.WriteLine($"{item.Product.Name} , {item.Amount} * {item.Product.Price} = {item.Total}");
+                    Console.WriteLine($"{item.Product.Name} , " +
+                        $"Amount: {item.Amount} * " +
+                        $"Price: {item.Product.Price} " +
+                        $"= {item.Total}");                                     
+
                 }
 
                 Console.WriteLine("\nCommands: \n <product code> <amount> Or type 'PAY' for checkout");

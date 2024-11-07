@@ -13,6 +13,7 @@ namespace CashierConsolePro.CampaignTools
         public void AddCampaign(Campaign campaign)
         {
             campaigns.Add(campaign);
+            Write();
         }
 
         public void RemoveCampaign(Campaign campaign)

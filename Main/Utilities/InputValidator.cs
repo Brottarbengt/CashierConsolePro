@@ -40,6 +40,7 @@ namespace CashierConsolePro.Utilities
             }
             return value;
         }
+
         public static bool IsPayCommand(string input)
         {
             return "PAY".Equals(input, StringComparison.OrdinalIgnoreCase);
@@ -50,9 +51,20 @@ namespace CashierConsolePro.Utilities
             return !string.IsNullOrWhiteSpace(input) && input.All(char.IsLetterOrDigit);
         }
 
+        public static bool IsValidCodeLength(string code)
+        {
+            return code.Length >= 3;
+        }
+
         public static bool IsValidAmount(string input)
         {
             return int.TryParse(input, out int amount) && amount > 0;
         }
+
+        public static bool IsValidName(string name)
+        {
+            return !string.IsNullOrWhiteSpace(name);
+        }
+    
     }
 }

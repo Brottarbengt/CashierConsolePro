@@ -6,7 +6,7 @@ namespace CashierConsolePro.Products
 {
     public class Product
     {
-        public string Name { get; }
+        public string Name { get; private set; }
         public string ProductCode { get; }
         public decimal Price => CalculatePrice();
         public decimal ListPrice { get; set; }
@@ -22,7 +22,10 @@ namespace CashierConsolePro.Products
             PriceType = priceType;
             Campaigns = new List<Campaign>();
         }
-
+        public void SetName(string newName)
+        {
+            Name = newName;
+        }
         public override string ToString()
         {
             return $"Product: {Name}, Code: {ProductCode}, Price: {ListPrice:C} Discount: {ListPrice - Price:C}";
