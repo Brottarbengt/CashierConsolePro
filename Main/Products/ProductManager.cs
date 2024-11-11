@@ -136,6 +136,7 @@ namespace CCP.Products
             Console.WriteLine("Change Product Name");
 
             ShowAllProducts();
+            Console.WriteLine("Here is all the products, press any key to proceed.");
 
             Console.Write("Enter Product Code to Change Name: ");
             string code = Console.ReadLine();
@@ -163,6 +164,7 @@ namespace CCP.Products
             Console.WriteLine("Change Product Price");
 
             ShowAllProducts();
+            Console.WriteLine("Here is all the products, press any key to proceed.");
 
             Console.Write("Enter Product Code to Change Price: ");
             string code = Console.ReadLine();

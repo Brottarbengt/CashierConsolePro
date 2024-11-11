@@ -42,8 +42,7 @@ namespace CCP.Shopping
 
       
         public void Write()
-        {
-            // Create the receipt file name based on today's date
+        {            
             string receiptFileName = $"RECEIPT_{DateTime.Now:yyyyMMdd}.txt";
 
             using (StreamWriter writer = new(receiptFileName, true))
@@ -96,9 +95,7 @@ namespace CCP.Shopping
             }
 
             return totalSum;
-        }
-
-        
+        }        
     }
 }
 

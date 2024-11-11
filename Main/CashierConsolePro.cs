@@ -29,7 +29,7 @@ namespace CCP
                 DateOnly today = DateOnly.FromDateTime(DateTime.Now);
                 var campaigns = Campaigns.Instance().GetAllCampaigns();
 
-                foreach (var campaign in campaigns.ToList()) // Use ToList() to safely modify collection - new knowledge aquired!
+                foreach (var campaign in campaigns.ToList())
                 {
                     if (campaign.CampaignToDate < today)
                     {
