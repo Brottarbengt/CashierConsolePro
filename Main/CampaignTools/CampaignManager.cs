@@ -82,7 +82,7 @@ namespace CCP.CampaignTools
             string campaignName = InputValidator.GetString("\nEnter the name of the campaign to remove: ");
             
             var campaignToRemove = Campaigns.Instance().GetAllCampaigns()
-                .FirstOrDefault(c => c.CampaignName.Equals(campaignName));
+                .FirstOrDefault(c => c.CampaignName.Equals(campaignName, StringComparison.OrdinalIgnoreCase));
 
             if (campaignToRemove != null)
             {

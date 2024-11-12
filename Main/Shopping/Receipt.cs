@@ -5,8 +5,7 @@ namespace CCP.Shopping
     internal class Receipt : IFileWriter, IPay, ICalculateSum
     {
         public string Date { get; set; }
-        public decimal Total { get; set; }
-        private string receiptPath;
+        public decimal Total { get; set; }        
         private ShoppingCart cart;
         private int receiptCount;
 
@@ -37,13 +36,13 @@ namespace CCP.Shopping
 
         private void SaveReceiptCount()
         {
-            File.WriteAllText("receiptCount.txt", receiptCount.ToString());
+            File.WriteAllText("../../../receiptCount.txt", receiptCount.ToString());
         }
 
       
         public void Write()
         {            
-            string receiptFileName = $"RECEIPT_{DateTime.Now:yyyyMMdd}.txt";
+            string receiptFileName = $"../../../RECEIPT_{DateTime.Now:yyyyMMdd}.txt";
 
             using (StreamWriter writer = new(receiptFileName, true))
             {

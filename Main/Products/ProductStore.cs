@@ -8,7 +8,7 @@ namespace CCP.Products
         private static ProductStore instance;
         private List<Product> products = new List<Product>();
         
-        private readonly string filePath = "./products.txt"; // File to store products.
+        private readonly string filePath = "../../../products.txt"; 
 
         private ProductStore()
         {

@@ -8,7 +8,7 @@ namespace CCP.CampaignTools
         private static Campaigns instance;
         private List<Campaign> campaigns = new List<Campaign>();
 
-        private readonly string filePath = "./campaigns.txt";
+        private readonly string filePath = "../../../campaigns.txt";
 
         public void AddCampaign(Campaign campaign)
         {

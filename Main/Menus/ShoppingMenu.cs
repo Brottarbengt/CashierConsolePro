@@ -12,10 +12,15 @@ namespace CCP.Menus
         {
             
             ShoppingCart cart = new ShoppingCart();
+            
 
             while (true)
             {
                 Console.Clear();
+
+                ProductManager.ShowAllProducts();
+                Console.WriteLine("\n===================================================================\n");
+
                 Console.WriteLine("|Cashier console|");
 
                 foreach (var item in cart.GetAllProducts())
