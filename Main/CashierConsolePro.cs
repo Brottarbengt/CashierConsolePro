@@ -13,34 +13,44 @@ namespace CCP
 
             StartupLoad();
             Console.Clear();
-            Startscreen.Display();            
+            Startscreen.Display();
             TopMenu.ShowMenu();
-            
-            
+
+
         }
+
+
 
         public static void StartupLoad()
         {
+            ProductStore.Instance().Read();
+            Campaigns.Instance().Read();
+
+            DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+            var campaigns = Campaigns.Instance().GetAllCampaigns();
+
+            foreach (var campaign in campaigns.ToList())
             {
-                
-                ProductStore.Instance().Read();
-                Campaigns.Instance().Read();
-
-                DateOnly today = DateOnly.FromDateTime(DateTime.Now);
-                var campaigns = Campaigns.Instance().GetAllCampaigns();
-
-                foreach (var campaign in campaigns.ToList())
+                if (campaign.CampaignToDate < today)
                 {
-                    if (campaign.CampaignToDate < today)
-                    {
-                        Campaigns.Instance().RemoveCampaign(campaign);
+                    Campaigns.Instance().RemoveCampaign(campaign);
 
-                        foreach (var product in ProductStore.Instance().GetAllProducts())
+                    foreach (var product in ProductStore.Instance().GetAllProducts())
+                    {
+                        if (product.Campaigns.Contains(campaign))
                         {
-                            if (product.Campaigns.Contains(campaign))
-                            {
-                                product.Campaigns.Remove(campaign);
-                            }
+                            product.Campaigns.Remove(campaign);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (string productCode in campaign.DiscountedProductCodes)
+                    {
+                        Product product = ProductStore.Instance().FindProduct(productCode);
+                        if (product != null && !product.Campaigns.Contains(campaign))
+                        {
+                            product.Campaigns.Add(campaign);
                         }
                     }
                 }

@@ -1,5 +1,5 @@
-Banan,200,14,5,Weight
-Bollnäsfil 1,5l,250,21,PerEach
-Estrella Dillchips 200g,310,28,PerEach
-Bajskorv,999,0,PerEach
-Lösgodis,400,9,9,Weight
+Banan*200*14,5*Weight
+Bollnäsfil 1,5l*250*21*PerEach
+Estrella Dillchips 200g*310*28*PerEach
+Bajskorv*999*0*PerEach
+Lösgodis*400*9,9*Weight

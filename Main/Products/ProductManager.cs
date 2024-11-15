@@ -47,7 +47,7 @@ namespace CCP.Products
             string code;
             while (true)
             {
-                code = InputValidator.GetString("Enter Product Code: ");
+                code = InputValidator.GetString("Enter Product Code, three character/digits: ");
                 if (InputValidator.IsValidCodeLength(code))
                 {
                     break;
@@ -120,10 +120,10 @@ namespace CCP.Products
             Console.WriteLine("\n  Products in store: ");
             foreach (var product in productStore.GetAllProducts())
             {
-                Console.WriteLine(
-                  $"{product.Name}, " +
-                  $"Code: {product.ProductCode}, " +
-                  $"Price: {product.ListPrice} / Discounted: {product.Price}, " +
+                Console.WriteLine("\n"+
+                  $"Code: {product.ProductCode}   " +
+                  $"{product.Name}        " +
+                  $"Price: {product.ListPrice} / Discounted: {product.Price}       " +
                   $"{product.PriceType}");
             }
             Console.ReadKey();

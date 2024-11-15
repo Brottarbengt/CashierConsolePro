@@ -8,7 +8,7 @@ namespace CCP.CampaignTools
         public DateOnly CampaignFromDate { get; set; }
         public DateOnly CampaignToDate { get; set; }
         public decimal Discount { get; set; }
-        public string DiscountedProduct { get; set; }
+        public List<string> DiscountedProductCodes { get; set; } = new List<string>();
 
         public Campaign(string name, DateOnly from, DateOnly to, decimal discount)
         {
@@ -16,6 +16,7 @@ namespace CCP.CampaignTools
             CampaignFromDate = from;
             CampaignToDate = to;
             Discount = discount;
+            
         }                
     }
 }

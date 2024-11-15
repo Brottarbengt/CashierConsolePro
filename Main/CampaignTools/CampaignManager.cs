@@ -13,6 +13,7 @@ namespace CCP.CampaignTools
             Campaigns campaigns = Campaigns.Instance();
 
             Console.Clear();
+            ViewAllCampaigns();
             Console.WriteLine("Add Campaign");
 
             string campaignName = GetCampaignName();
@@ -28,7 +29,9 @@ namespace CCP.CampaignTools
             decimal discount = InputValidator.GetDecimal("Enter discount percentage: ");
 
             Campaign campaign = new Campaign(campaignName, campaignFromDate, campaignToDate, discount);
-           
+
+            ProductManager.ShowAllProducts();
+
             Console.WriteLine("Enter product codes to be in campaign separated by commas if more than one: ");
             string campaignProducts = Console.ReadLine();
 
@@ -45,6 +48,7 @@ namespace CCP.CampaignTools
                     if (productToAdd != null)
                     {
                         productToAdd.Campaigns.Add(campaign);
+                        campaign.DiscountedProductCodes.Add(trimmedCode);
                     }
                     else
                     {
@@ -62,12 +66,12 @@ namespace CCP.CampaignTools
             string name;
             while (true)
             {
-                name = InputValidator.GetString("Enter Campaign Name: ");
+                name = InputValidator.GetString("Campaign name cannot be empty and cannot contain '*'\nEnter Campaign Name: ");
                 if (InputValidator.IsValidName(name))
                 {
                     break;
                 }
-                Console.WriteLine("Campaign name cannot be empty.");
+                Console.WriteLine("Campaign name cannot be empty and cannot contain '*'. Please try again.");
             }
             return name;
         }
@@ -113,6 +117,7 @@ namespace CCP.CampaignTools
             Console.WriteLine("All Campaigns");
 
             var campaigns = Campaigns.Instance().GetAllCampaigns();
+            var products = ProductStore.Instance().GetAllProducts();
 
             if (campaigns.Count == 0)
             {
@@ -127,7 +132,24 @@ namespace CCP.CampaignTools
                     Console.WriteLine($"From Date: {campaign.CampaignFromDate:yyyy-MM-dd}");
                     Console.WriteLine($"To Date: {campaign.CampaignToDate:yyyy-MM-dd}");
                     Console.WriteLine($"Discount: {campaign.Discount}%");
-                    Console.WriteLine("=================================\n");
+                    
+                    bool hasAssociatedProducts = false;
+                    Console.Write("Products: ");
+
+                    foreach (var product in products)
+                    {
+                        if (product.Campaigns.Contains(campaign))
+                        {
+                            Console.Write($"{product.Name}, ");
+                            hasAssociatedProducts = true;
+                        }
+                    }
+
+                    if (!hasAssociatedProducts)
+                    {
+                        Console.WriteLine("No products associated with this campaign.");
+                    }
+                    Console.WriteLine("\n=================================\n");
                 }
             }
 

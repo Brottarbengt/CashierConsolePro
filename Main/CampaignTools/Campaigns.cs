@@ -31,7 +31,7 @@ namespace CCP.CampaignTools
                     campaigns.Clear();
                     while ((line = reader.ReadLine()) != null)
                     {
-                        var data = line.Split(',');
+                        var data = line.Split('*');
                         if (data.Length == 4)
                         {
                             string campaignName = data[0];
@@ -55,8 +55,8 @@ namespace CCP.CampaignTools
                 foreach (var campaign in campaigns)
                 {
                     writer.WriteLine(
-                        $"{campaign.CampaignName},{campaign.CampaignFromDate.ToString("yyyy-MM-dd")}," +
-                        $"{campaign.CampaignToDate.ToString("yyyy-MM-dd")},{campaign.Discount}");
+                        $"{campaign.CampaignName}*{campaign.CampaignFromDate.ToString("yyyy-MM-dd")}," +
+                        $"{campaign.CampaignToDate.ToString("yyyy-MM-dd")}*{campaign.Discount}");
                 }
             }
         }

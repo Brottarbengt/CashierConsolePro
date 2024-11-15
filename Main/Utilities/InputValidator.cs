@@ -63,7 +63,7 @@ namespace CCP.Utilities
 
         public static bool IsValidName(string name)
         {
-            return !string.IsNullOrWhiteSpace(name);
+            return !string.IsNullOrWhiteSpace(name) && !name.Contains("*");
         }
     
     }

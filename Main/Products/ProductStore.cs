@@ -34,8 +34,8 @@ namespace CCP.Products
             {
                 foreach (var product in products)
                 {
-                    writer.WriteLine($"{product.Name},{product.ProductCode}," +
-                        $"{product.Price},{product.PriceType}");
+                    writer.WriteLine($"{product.Name}*{product.ProductCode}*" +
+                        $"{product.Price}*{product.PriceType}");
                 }
 
             }
@@ -52,7 +52,7 @@ namespace CCP.Products
                     products.Clear();
                     while ((line = reader.ReadLine()) != null)
                     {
-                        var data = line.Split(',');
+                        var data = line.Split('*');
                         if (data.Length == 4)
                         {
                             string name = data[0];
