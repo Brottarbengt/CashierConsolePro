@@ -126,7 +126,7 @@ namespace CCP.Products
                   $"Price: {product.ListPrice} / Discounted: {product.Price}       " +
                   $"{product.PriceType}");
             }
-            Console.ReadKey();
+            
 
         }
 

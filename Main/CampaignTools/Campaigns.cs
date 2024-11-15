@@ -32,15 +32,23 @@ namespace CCP.CampaignTools
                     while ((line = reader.ReadLine()) != null)
                     {
                         var data = line.Split('*');
-                        if (data.Length == 4)
+                        if (data.Length >= 4) 
                         {
                             string campaignName = data[0];
+
                             if (DateOnly.TryParse(data[1], out DateOnly campaignFromDate) &&
                                 DateOnly.TryParse(data[2], out DateOnly campaignToDate) &&
                                 decimal.TryParse(data[3], out decimal discount))
                             {
-                                campaigns.Add(new Campaign(campaignName, campaignFromDate, 
-                                    campaignToDate, discount));
+                                var campaign = new Campaign(campaignName, campaignFromDate, campaignToDate, discount);
+
+                                if (data.Length == 5)
+                                {
+                                    string[] productCodes = data[4].Split('|', StringSplitOptions.RemoveEmptyEntries);
+                                    campaign.DiscountedProductCodes = productCodes.ToList();
+                                }
+
+                                campaigns.Add(campaign);
                             }
                         }
                     }
@@ -54,9 +62,15 @@ namespace CCP.CampaignTools
             {
                 foreach (var campaign in campaigns)
                 {
+                    
+                    string discountedProducts = campaign.DiscountedProductCodes != null && campaign.DiscountedProductCodes.Any()
+                        ? string.Join('|', campaign.DiscountedProductCodes)
+                        : string.Empty;
+
+                    
                     writer.WriteLine(
-                        $"{campaign.CampaignName}*{campaign.CampaignFromDate.ToString("yyyy-MM-dd")}," +
-                        $"{campaign.CampaignToDate.ToString("yyyy-MM-dd")}*{campaign.Discount}");
+                        $"{campaign.CampaignName}*{campaign.CampaignFromDate:yyyy-MM-dd}*" +
+                        $"{campaign.CampaignToDate:yyyy-MM-dd}*{campaign.Discount}*{discountedProducts}");
                 }
             }
         }

@@ -32,6 +32,7 @@ namespace CCP.Menus
                     break;
                 case 2:
                     ProductManager.ShowAllProducts();
+                    Console.ReadKey();
                     break;
                 case 3:
                     ProductManager.ChangeProductName(); 

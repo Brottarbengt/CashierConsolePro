@@ -1,0 +1,7 @@
+Receipt #1
+Date: 2024-11-15 11:25:03
+Items:
+Banan - 14,50 kr Discount -1,45
+Apple - 12,30 kr Discount -1,23
+Total: 118,62 kr
+=== END OF RECEIPT ===

@@ -63,10 +63,11 @@ namespace CCP.CampaignTools
         }
         private static string GetCampaignName()
         {
+            
             string name;
             while (true)
             {
-                name = InputValidator.GetString("Campaign name cannot be empty and cannot contain '*'\nEnter Campaign Name: ");
+                name = InputValidator.GetString("(Campaign name cannot be empty and cannot contain '*')\nEnter Campaign Name: ");
                 if (InputValidator.IsValidName(name))
                 {
                     break;
@@ -107,7 +108,7 @@ namespace CCP.CampaignTools
                 Console.WriteLine($"Campaign '{campaignName}' not found.");
             }
 
-            Console.WriteLine("\nPress any key to return to the menu...");
+            Console.WriteLine("\nPress any key to proceed...");
             Console.ReadKey();
         }
 
@@ -153,8 +154,8 @@ namespace CCP.CampaignTools
                 }
             }
 
-            Console.WriteLine("\nPress any key to return to the menu...");
-            Console.ReadKey();
+            Console.WriteLine("\nPress any key to proceed...");
+            
         }
     }
 }

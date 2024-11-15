@@ -12,7 +12,7 @@ namespace CCP.Menus
         {
             
             ShoppingCart cart = new ShoppingCart();
-            
+
 
             while (true)
             {
@@ -28,20 +28,27 @@ namespace CCP.Menus
                     Console.WriteLine($"{item.Product.Name} , " +
                         $"Amount: {item.Amount} * " +
                         $"Price: {item.Product.Price} " +
-                        $"= {item.Total}");                                     
+                        $"= {item.Total}");
 
                 }
 
-                Console.WriteLine("\nCommands: \n <product code> <amount> Or type 'PAY' for checkout");
+                Console.WriteLine("\nCommands: \nType <product code> (space) <amount> and press enter to add product. Or type 'PAY' for checkout");
 
-                var commands = Console.ReadLine().Split(" ");
+                var input = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid product code and amount, or type 'PAY' to checkout.");
+                    continue;
+                }
+
+                var commands = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                 if (commands.Length == 1 && InputValidator.IsPayCommand(commands[0]))
                 {
                     var receipt = cart.CheckOut();
                     receipt.CreateReceipt();
                     receipt.DisplayReceipt();
-                    break;  
+                    break;
                 }
 
                 else if (commands.Length == 2 && InputValidator.IsValidProductCode(commands[0]) && InputValidator.IsValidAmount(commands[1]))

@@ -76,7 +76,9 @@ namespace CCP.Shopping
             Console.WriteLine("Items:");
             foreach (var product in cart.GetAllProducts())
             {
-                Console.WriteLine($"{product.Product.Name} - {product.Product.Price:C} / {product.Product.PriceType.ToString()}");
+                Console.WriteLine($"{product.Product.Name} - {product.Product.Price:C} " +
+                    $"Discount {product.Product.ListPrice - product.Product.Price:C}" +
+                    $"/ {product.Product.PriceType.ToString()}");
             }
             Console.WriteLine($"Total: {Total:C}");
             Console.WriteLine("Press any key to return to menu...");

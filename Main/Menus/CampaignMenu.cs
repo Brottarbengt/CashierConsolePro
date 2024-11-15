@@ -23,6 +23,7 @@ namespace CCP.Menus
                     break;
                 case 2:
                     CampaignManager.ViewAllCampaigns();
+                    Console.ReadKey();
                     break;
                 case 3:
                     TopMenu.ShowMenu();
