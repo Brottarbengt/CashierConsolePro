@@ -1,0 +1,6 @@
+Receipt #1
+Date: 2024-11-20 08:40:36
+Items:
+Bollnäsfil 1,5l - 21,00 kr Discount 0
+Total: 63,00 kr
+=== END OF RECEIPT ===
